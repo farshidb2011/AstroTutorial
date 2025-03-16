@@ -1,31 +1,47 @@
 ---
-import '../styles/global.css';
-import Navigation from '../components/Navigation.astro';
+import "../styles/global.css";
+import Navigation from "../components/Navigation.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 const pageTitle = "About";
 const arrNames = ["John", "Jane", "Jack"];
+
+const identity = {
+    name: "Farshid",
+    country: "Iran",
+};
 
 const vars = {
     color: "red",
     fontSize: "16px",
     fontWeight: "bold",
 };
+
+const showSkills = false;
+
+const skills = ["HTML", "CSS", "SASS", "JAVASCRIPT", "VUE", "REACT", "ASTRO"];
 ---
 
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{pageTitle}</title>
-    </head>
-    <body>
-        <Navigation />
-        <br />
-        <p class="content">ABOUT PAGE</p>
-        <br />
-        {arrNames.map((name) => <li>{name}</li>)}
-    </body>
-</html>
+<BaseLayout title="About Page">
+    <p class="content">ABOUT PAGE</p>
+    <br />
+    {arrNames.map((name) => <li>{name}</li>)}
+
+    <p>Here are a few facts about me:</p>
+    <ul>
+        <li>My name is {identity.name}</li>
+        <li>I live in {identity.country}</li>
+    </ul>
+    <p>My skills are:</p>
+    {
+        !showSkills && (
+            <ul>
+                {skills.map((skill) => (
+                    <li class="skill">{skill}</li>
+                ))}
+            </ul>
+        )
+    }
+</BaseLayout>
 
 <style define:vars={vars}>
     .content {
@@ -33,4 +49,10 @@ const vars = {
         font-size: var(--fontSize);
         font-weight: var(--fontWeight);
     }
+
+    .skill {
+        color: green;
+    }
 </style>
+
+<script></script>
