@@ -1,7 +1,22 @@
 ---
-import Humburger from '../components/Hamburger.astro';
-import Navigation from '../components/Navigation.astro'
+import Humburger from "../components/Hamburger.astro";
+import Navigation from "../components/Navigation.astro";
+import ThemeIcon from "./ThemeIcon.astro";
 ---
 
-<Humburger />
+<div class="header">
+    <Humburger />
+    <div>
+        <ThemeIcon />
+        <a href="/rss.xml">RSS Feed Link</a>
+    </div>
+</div>
 <Navigation />
+
+<style>
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+</style>
